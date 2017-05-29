@@ -1,0 +1,87 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Poppins:300">
+    <link rel="stylesheet" href="/static/ethsnap.css">
+    <title>ethsnap - Nightly Ethereum blockchain snapshots</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="brand">ethsnap</h1>
+        <div class="subhead">Nightly Ethereum blockchain snapshots</div>
+        <p>Tired of only connecting to 3 peers and downloading the blockchain at an exhausting pace?  Grab a nightly snapshot of the Ethereum blockchain in one big download.</p>
+    </header>
+
+    <main>
+
+        <div class="block">
+        
+            <h2>Main Net</h2>
+
+            <div class="latest">
+                <div class="filename"><a href="/archives/main/{{ files.0.file }}">{{ files.0.file }}</a></div>
+                <div class="filemeta">size: {{ files.0.size }}GB</div>
+                <div class="filemeta">sha1sum: {{ files.0.sha1 }}</div>
+            </div>
+
+        </div>
+
+        <div class="block">
+
+            <h2>Test Nets</h2>
+
+            <p><em><span class="brand">ethmsg</span> doesn't currently have snapshots for test networks but I hope to add at least Ropsten soon.</em></p>
+
+        </div>
+
+        <div class="block">
+
+            <h2>Usage</h2>
+
+            <h3>geth</h3>
+
+            <p>To use these snapshots, download the file to your node and extract the data to the <code>~/.ethereum/chaindata</code> folder.  The following command should work on a Linux machine:</p>
+
+            <code class="codeblock">tar -xzf /path/to/ethereum-chaindata-2017-05-29-142210.tgz -C ~/.ethereum/chaindata</code>
+
+        </div>
+
+        <div class="block">
+
+            <h2>Morroring</h2>
+
+            <h3>Private</h3>
+
+            <p>You're welcome and encouraged to run a private mirror for your own network of nodes.  All you need is an <code>rsync</code> cronjob.  Add the following to your crontab:</p>
+
+            <code class="codeblock">0 0 * * * &nbsp; &nbsp; &nbsp; rsync --archive --delete --compress rsync://ethsnap.com/main/ /path/to/archive/dir</code>
+
+            <h3>Public</h3>
+
+            <p>I would love some public mirrors to help spread the load.  Please follow the steps above and <a href="mailto:mike@gointo.software">send me an E-mail</a> with a URL and I can put you into the mirror rotation.</p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="donations">
+            
+            <h2>Donate</h2>
+
+            <p>If you would like to help pay for the cost of the servers or help expand <span class="brand">ethsnap</span>, please send any donations to the following address.  <u>Please note</u> that some exchanges may have problems sending ether to this address, so you should use your own wallet.</p>
+
+            <div class="donate-callout">
+                <div class="prompt">Send Ξther Donations to </div>
+                <div class="address">0x2614Bd85eFf181208C8865Da8eF95Ea03E36a591</div>
+            </div>
+
+            <h2>Contact</h2>
+
+            <p>If you have any issues or questions, please send me an E-mail at <a href="mailto:mike@gointo.software">mike@gointo.software</a>.</p>
+
+        </div>
+    </footer>
+
+</body>
+</html>

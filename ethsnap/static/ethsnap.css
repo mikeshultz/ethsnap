@@ -1,0 +1,109 @@
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #8BAF8C;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+    line-height: .6em;
+    margin-top: 1em;
+}
+
+h2 {
+    margin: 0;
+}
+
+header {
+    margin-bottom: 1.5em;
+}
+
+header .subhead {
+    font-size: .75em;
+    margin-bottom: 1em;
+}
+
+header p {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+footer {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.block {
+    padding: 1em;
+    margin-bottom: 1em;
+    background: #92C794;
+    border: 1px #000 solid;
+}
+
+.brand {
+    color: #915333;
+}
+
+code {
+    font-family: Inconsolata, monospace;
+    background: #B1CFB2;
+    padding: .25em;
+}
+code.codeblock {
+    display: block;
+    text-align: left;
+}
+
+.latest {}
+.latest .filename {
+    display: block;
+    font-size: 150%;
+}
+.latest .filemeta {
+    display: block;
+    font-size: 75%;
+    color: #343434;
+}
+
+.file-list {
+    margin: 0 auto;
+}
+.file-list thead {
+    font-size: 75%;
+}
+.file-list tbody {}
+.file-list tbody .filename {
+    font-weight: bold;
+}
+.file-list tbody td {
+    font-size: 75%;
+}
+
+.donate-callout {
+    font-size: 125%;
+    display: inline-block;
+    background: #CDCFB1;
+    padding: 0 1em;
+    border: 1px #000 solid;
+    margin-bottom: 1em;
+}
+.donate-callout div {
+    display: block;
+    float: left;
+    padding: 1em;
+    height: 1.5em;
+    margin: .75em 0 .75em;
+    padding: 0;
+}
+.donate-callout div.prompt {
+    margin-right: 1em;
+    color: #656565;
+}

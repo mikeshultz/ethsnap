@@ -1,0 +1,20 @@
+        <table class="file-list">
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Size(bytes)</th>
+                    <th>Timestamp</th>
+                    <th>sha1sum</th>
+                </th>
+            </thead>
+            <tbody>
+            {% for f in files %}
+                <tr>
+                    <td class="filename"><a href="/files/{{ f.file }}">{{ f.file }}</a></td>
+                    <td>{{ f.size }}</td>
+                    <td>{{ f.timestamp }}</td>
+                    <td>{{ f.sha1 }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
