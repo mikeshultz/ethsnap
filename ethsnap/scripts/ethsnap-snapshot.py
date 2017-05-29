@@ -63,10 +63,14 @@ output_file = os.path.join(OUT_DIR, output_filename)
 os.chdir(os.path.join(DATA_DIR, "geth/chaindata"))
 
 # Run the archive command
-complete = subprocess.run(['tar', '-czf', output_file, '.'], timeout=TIMEOUT)
+process = subprocess.Popen(['tar', '-czf', output_file, '.'], \
+    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+out, err = process.communicate(timeout=TIMEOUT)
+returncode = process.returncode
 
 # Check its return
-if complete.returncode == 0:
+if returncode == 0:
     print("Archived successfully")
 
     # Get info on new file
@@ -97,5 +101,5 @@ if complete.returncode == 0:
     conn.commit()
 
 else:
-    print(complete.stderr, file=sys.stderr)
+    print(err, file=sys.stderr)
     sys.exit(1)
