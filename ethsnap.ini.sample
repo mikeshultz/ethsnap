@@ -1,0 +1,6 @@
+[default]
+keep = 3
+timeout = 3600
+archivedir = /tmp/ethsnap/archives
+datadir = ~/.ethereum
+sqlite = /var/ethsnap/ethsnap.db
