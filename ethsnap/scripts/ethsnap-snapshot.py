@@ -56,14 +56,14 @@ else:
     sqlite_db = os.path.join(orig_pwd, SQLITE_FILE)
 
 # Compile the output filename we need
-output_filename = datetime.datetime.now().strftime("ethereum-chaindata-%Y-%m-%d-%H%M%S.tgz")
+output_filename = datetime.datetime.now().strftime("ethereum-chaindata-%Y-%m-%d-%H%M%S.lzma")
 output_file = os.path.join(OUT_DIR, output_filename)
 
 # Switch to the chaindata directory
 os.chdir(os.path.join(DATA_DIR, "geth/chaindata"))
 
 # Run the archive command
-process = subprocess.Popen(['tar', '-czf', output_file, '.'], \
+process = subprocess.Popen(['tar', '--lzma', '-cf', output_file, '.'], \
     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 out, err = process.communicate(timeout=TIMEOUT)
