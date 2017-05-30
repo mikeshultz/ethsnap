@@ -3,10 +3,10 @@
 # 
 # This script handles the nightly archiving and cleanup for ethsnap.  
 
-[ -z $ETHSNAP_KEEP_ARCHIVES ] ETHSNAP_KEEP_ARCHIVES=1
-[ -z $ETHSNAP_ARCHIVE_DIR ] ETHSNAP_ARCHIVE_DIR="/data/archives/main"
-[ -z $ETHSNAP_PYTHON ] ETHSNAP_PYTHON="/var/venvs/ethsnap/bin/python"
-[ -z $ETHSNAP_ROOT ] ETHSNAP_ROOT="/var/www/ethsnap"
+[[ -n $ETHSNAP_KEEP_ARCHIVES ]] || ETHSNAP_KEEP_ARCHIVES=1
+[[ -n $ETHSNAP_ARCHIVE_DIR ]] || ETHSNAP_ARCHIVE_DIR="/data/archives/main"
+[[ -n $ETHSNAP_PYTHON ]] || ETHSNAP_PYTHON="/var/venvs/ethsnap/bin/python"
+[[ -n $ETHSNAP_ROOT ]] || ETHSNAP_ROOT="/var/www/ethsnap"
 
 echo "Stopping geth"
 systemctl stop geth
