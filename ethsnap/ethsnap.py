@@ -16,7 +16,7 @@ FLASK_PORT = config.getint('flask', 'port', fallback=5000)
 
 def b_to_gb(b):
     """ Convert int of bytes to string of gigbates """
-    return "%.9f" % (b / 1024 / 1024 / 1024)
+    return "%.2f" % (b / 1024 / 1024 / 1024)
 
 class Snapshots:
     def __init__(self):
