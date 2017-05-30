@@ -70,36 +70,34 @@ out, err = process.communicate(timeout=TIMEOUT)
 returncode = process.returncode
 
 # Check its return
-if returncode == 0:
-    print("Archived successfully")
-
-    # Get info on new file
-    archive_stat = os.stat(output_file)
-    archive_size = archive_stat.st_size
-    sha1sum = hash_file(output_file)
-
-    # Connect to sqlite db
-    conn = sqlite3.connect(sqlite_db)
-
-    # get the cursor
-    cur = conn.cursor()
-
-    # Create the table if necessary
-    cur.execute("""CREATE TABLE IF NOT EXISTS snapshots 
-        (id integer primary key, timestamp int, sha1 text, size int, filename text)""")
-
-    # insert this new record
-    cur.execute("""INSERT INTO snapshots (timestamp, sha1, size, filename) 
-                   VALUES (:stamp, :sha1, :size, :file)""", 
-        {
-            'stamp': datetime.datetime.utcnow().timestamp(), 
-            'sha1': sha1sum, 
-            'size': archive_size, 
-            'file': output_filename
-        }
-    )
-    conn.commit()
-
-else:
+if returncode != 0:
     print(err, file=sys.stderr)
-    sys.exit(1)
+
+print("Archive complete")
+
+# Get info on new file
+archive_stat = os.stat(output_file)
+archive_size = archive_stat.st_size
+sha1sum = hash_file(output_file)
+
+# Connect to sqlite db
+conn = sqlite3.connect(sqlite_db)
+
+# get the cursor
+cur = conn.cursor()
+
+# Create the table if necessary
+cur.execute("""CREATE TABLE IF NOT EXISTS snapshots 
+    (id integer primary key, timestamp int, sha1 text, size int, filename text)""")
+
+# insert this new record
+cur.execute("""INSERT INTO snapshots (timestamp, sha1, size, filename) 
+               VALUES (:stamp, :sha1, :size, :file)""", 
+    {
+        'stamp': datetime.datetime.utcnow().timestamp(), 
+        'sha1': sha1sum, 
+        'size': archive_size, 
+        'file': output_filename
+    }
+)
+conn.commit()
