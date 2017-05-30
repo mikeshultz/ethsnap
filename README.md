@@ -1,6 +1,7 @@
 # ethsnap
 
-Nightly ethereum blockchain snapshots
+ethsnap provides nightly ethereum blockchain snapshots.  This is the source code
+for [ethsnap.com](https://www.ethsnap.com).
 
 ## Deploy
 
