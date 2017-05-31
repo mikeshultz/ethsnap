@@ -13,6 +13,7 @@ config.read("/etc/ethsnap.ini")
 SQLITE_DB = config.get('default', 'sqlite', fallback="/var/ethsnap/ethsnap.db")
 FLASK_ADDR = config.get('flask', 'address', fallback="127.0.0.1")
 FLASK_PORT = config.getint('flask', 'port', fallback=5000)
+ANALYTICS_ID = config.get('default', 'analyticsid', fallback=None)
 
 def b_to_gb(b):
     """ Convert int of bytes to string of gigbates """
@@ -63,7 +64,7 @@ class Snapshots:
 def index():
     s = Snapshots()
     s.fetch()
-    return render_template("index.html", **{'files': s.snapshots})
+    return render_template("index.html", **{'files': s.snapshots, 'analytics_id': ANALYTICS_ID, })
 
 @app.route('/json')
 def snapsots():
