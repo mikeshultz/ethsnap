@@ -12,7 +12,7 @@ parser.add_argument("-q", "--quiet", action="store_true",
     help="Suppress informational messages")
 args = parser.parse_args()
 
-archive_files = glob.glob(os.path.join(args.directory[0], "*.tar.xz"))
+archive_files = glob.glob(os.path.join(args.directory[0], "*.tar.gz"))
 
 file_sizes = {}
 for f in archive_files:
