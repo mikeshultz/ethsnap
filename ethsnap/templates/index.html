@@ -19,9 +19,13 @@
             <h2>Main Net</h2>
 
             <div class="latest">
+                {% if files|length > 0 %}
                 <div class="filename"><a href="/archives/main/{{ files.0.file }}" onclick="ga('send', 'event', 'Download', 'Download', 'chaindata', 1);">{{ files.0.file }}</a></div>
                 <div class="filemeta">size: {{ files.0.size }}GB</div>
                 <div class="filemeta">sha1sum: {{ files.0.sha1 }}</div>
+                {% else %}
+                <div class="filename">No snapshots yet, please try again later.</div>
+                {% endif %}
             </div>
 
         </div>
@@ -42,7 +46,7 @@
 
             <p>To use these snapshots, download the file to your node and extract the data to the <code>~/.ethereum/chaindata</code> folder.  The following command should work on a Linux machine:</p>
 
-            <code class="codeblock">tar -xzf /path/to/{{ files.0.file }} -C ~/.ethereum/chaindata</code>
+            <code class="codeblock">tar -xzf /path/to/{% if files|length > 0 %}{{ files.0.file }}{% else %}ethereum-chaindata-2017-06-25-000001.tar.gz{% endif %} -C ~/.ethereum/chaindata</code>
 
         </div>
 
