@@ -52,6 +52,10 @@ footer {
     color: #915333;
 }
 
+.hide {
+    display: none;
+}
+
 code {
     font-family: Inconsolata, monospace;
     background: #B1CFB2;
